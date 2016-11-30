@@ -1,3 +1,3 @@
-# Javascript Project Template
+# Javascript Lab for Hands on with Functional Programming
 
-This is a javascript project template with batteries included to speed up project initiation.
+This is a javascript lab.
