@@ -19,5 +19,8 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jest": "^17.0.3",
+    "ramda": "^0.22.1"
+  }
 }
