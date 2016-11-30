@@ -4,8 +4,18 @@ import R from 'ramda';
 /*
   q1, can list all names of listing
 */
-export const getNames = R.pipe(
+export const names = R.pipe(
   R.path(['results_json', 'search_results']),
+  R.map(R.path(['listing', 'name'])),
+);
+
+/*
+  q2, can list all names of listing where its primary_host.is_superhost is true
+*/
+
+export const superhostNames = R.pipe(
+  R.path(['results_json', 'search_results']),
+  R.filter(R.pathEq(['listing', 'primary_host', 'is_superhost'], true)),
   R.map(R.path(['listing', 'name'])),
 );
 

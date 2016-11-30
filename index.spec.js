@@ -1,8 +1,8 @@
 import res from './data/airbnb/search_results.json';
-import { getNames } from './index';
+import { names, superhostNames } from './index';
 
 it('can list all names of listing', () => {
-  expect(getNames(res)).toEqual(
+  expect(names(res)).toEqual(
     [
       'modern double room, 5 min to MRT',
       'Taipei i trip❤4mins MRT❤Xingtian temple❤homey apt',
@@ -24,4 +24,10 @@ it('can list all names of listing', () => {
       'MRT松江南京全新裝潢雙人房',
     ],
   );
+});
+it('can list all names of listing where its primary_host.is_superhost is true', () => {
+  expect(superhostNames(res)).toEqual([
+    'Baloo\'s home',
+    'Taipei MRT Studio 到站即到家 MRT1 분',
+  ]);
 });
