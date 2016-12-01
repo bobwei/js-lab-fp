@@ -1,5 +1,11 @@
+import R from 'ramda';
+
 import res from './data/airbnb/search_results.json';
-import { names, superhostNames } from './index';
+import {
+  names, superhostNames,
+  filterWithQuery,
+  query,
+} from './index';
 
 it('can list all names of listing', () => {
   expect(names(res)).toEqual(
@@ -25,9 +31,38 @@ it('can list all names of listing', () => {
     ],
   );
 });
+
 it('can list all names of listing where its primary_host.is_superhost is true', () => {
   expect(superhostNames(res)).toEqual([
     'Baloo\'s home',
     'Taipei MRT Studio 到站即到家 MRT1 분',
   ]);
+});
+
+it('can predicate test case with condition correctly', () => {
+  const where = {
+    'listing.primary_host.is_superhost': {
+      op: 'pathEq',
+      val: true,
+    },
+  };
+  const data = {
+    listing: {
+      primary_host: {
+        is_superhost: true,
+      },
+    },
+  };
+  expect(query(where)(data)).toBe(true);
+});
+
+it('can filter with condition correctly', () => {
+  const where = {
+    'listing.primary_host.is_superhost': {
+      op: 'pathEq',
+      val: true,
+    },
+  };
+  const mapper = R.map(R.path(['listing', 'id']));
+  expect(filterWithQuery(where, mapper)(res)).toEqual([12200400, 2789610]);
 });

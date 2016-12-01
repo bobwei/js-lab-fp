@@ -19,6 +19,24 @@ export const superhostNames = R.pipe(
   R.map(R.path(['listing', 'name'])),
 );
 
+export const path = R.split('.');
+
+export const query = where => (
+  R.pipe(
+    R.toPairs,
+    R.map(([key, { op, val }]) => R[op](path(key), val)),
+    R.allPass,
+  )(where)
+);
+
+export const filterWithQuery = (where, mapper = R.map(R.path(['listing', 'name']))) => (
+  R.pipe(
+    R.path(['results_json', 'search_results']),
+    R.filter(query(where)),
+    mapper,
+  )
+);
+
 /*
   path = 'results_json.search_results[0].listing.name'
 
