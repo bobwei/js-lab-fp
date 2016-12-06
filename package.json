@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "jest": "^17.0.3",
+    "lodash": "^4.17.2",
     "ramda": "^0.22.1"
   }
 }

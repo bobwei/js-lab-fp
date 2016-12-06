@@ -5,6 +5,7 @@ import {
   names, superhostNames,
   filterWithQuery,
   query,
+  validate,
 } from './index';
 
 it('can list all names of listing', () => {
@@ -65,4 +66,20 @@ it('can filter with condition correctly', () => {
   };
   const mapper = R.map(R.path(['listing', 'id']));
   expect(filterWithQuery(where, mapper)(res)).toEqual([12200400, 2789610]);
+});
+
+it('validate function does work', () => {
+  const data = {
+    name: 'Bob',
+    age: 28,
+    color: 'red',
+    friends: [{
+      name: 'zuckerberg',
+    }],
+    home: {
+      address: '',
+    },
+  };
+  const requiredMsg = 'required';
+  expect(validate(R._, 'home.address', data)).toEqual(requiredMsg);
 });
