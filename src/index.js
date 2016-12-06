@@ -1,5 +1,4 @@
 import R from 'ramda';
-import _ from 'lodash/fp';
 
 /*
   q1, can list all names of listing
@@ -36,15 +35,3 @@ export const filterWithQuery = (where, mapper = R.map(R.path(['listing', 'name']
     mapper,
   )
 );
-
-export const required = [
-  [R.isNil, R.always('required')],
-  [R.isEmpty, R.always('required')],
-];
-
-export const validate = R.curry((conds = required, key, obj) => (
-  R.pipe(
-    _.get(key),
-    R.cond(conds),
-  )(obj)
-), 3);
