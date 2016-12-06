@@ -32,6 +32,9 @@ it('can run validation with given rules', () => {
   }, {
     key: 'age',
     validate: validate(required()),
+  }, {
+    key: 'x.y.z',
+    validate: validate(required()),
   }];
   const data = {
     name: 'Bob',
@@ -43,5 +46,5 @@ it('can run validation with given rules', () => {
       address: '',
     },
   };
-  expect(validateWithRules(rules)(data)).toEqual({ age: 'required' });
+  expect(validateWithRules(rules)(data)).toEqual({ age: 'required', x: { y: { z: 'required' } } });
 });
