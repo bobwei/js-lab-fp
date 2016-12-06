@@ -1,6 +1,12 @@
+/* eslint-disable */
 import R from 'ramda';
 
-import { validate } from './index';
+import {
+  validate, required,
+  validateWithRules,
+} from './index';
+
+const requiredMsg = 'required';
 
 it('validate function does work', () => {
   const data = {
@@ -14,6 +20,27 @@ it('validate function does work', () => {
       address: '',
     },
   };
-  const requiredMsg = 'required';
-  expect(validate(R._, 'home.address', data)).toEqual(requiredMsg);
+  expect(validate(required, 'home.address', data)).toEqual(requiredMsg);
+  expect(validate(required)('home.address')(data)).toEqual(requiredMsg);
+});
+
+it('can run validation with given rules', () => {
+  const rules = [{
+    key: 'name',
+    validate: validate(required),
+  }, {
+    key: 'age',
+    validate: validate(required),
+  }];
+  const data = {
+    name: 'Bob',
+    color: 'red',
+    friends: [{
+      name: 'zuckerberg',
+    }],
+    home: {
+      address: '',
+    },
+  };
+  expect(validateWithRules(rules)(data)).toEqual({ age: 'required' });
 });
