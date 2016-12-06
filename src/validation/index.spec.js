@@ -20,17 +20,18 @@ it('validate function does work', () => {
       address: '',
     },
   };
-  expect(validate(required, 'home.address', data)).toEqual(requiredMsg);
-  expect(validate(required)('home.address')(data)).toEqual(requiredMsg);
+  expect(validate(required(), 'home.address', data)).toEqual(requiredMsg);
+  expect(validate(required())('home.address')(data)).toEqual(requiredMsg);
+  expect(validate(required('hello world'))('home.address')(data)).toEqual('hello world');
 });
 
 it('can run validation with given rules', () => {
   const rules = [{
     key: 'name',
-    validate: validate(required),
+    validate: validate(required()),
   }, {
     key: 'age',
-    validate: validate(required),
+    validate: validate(required()),
   }];
   const data = {
     name: 'Bob',

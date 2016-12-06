@@ -2,9 +2,9 @@
 import R from 'ramda';
 import _ from 'lodash/fp';
 
-export const required = [
-  [R.isNil, R.always('required')],
-  [R.isEmpty, R.always('required')],
+export const required = (msg = 'required') => [
+  [R.isNil, R.always(msg)],
+  [R.isEmpty, R.always(msg)],
 ];
 
 export const validate = R.curry((conds, key, obj) => (
