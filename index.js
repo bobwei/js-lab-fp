@@ -36,15 +36,3 @@ export const filterWithQuery = (where, mapper = R.map(R.path(['listing', 'name']
     mapper,
   )
 );
-
-/*
-  path = 'results_json.search_results[0].listing.name'
-
-  path2 = 'results_json.search_results[0][0].listing.name'
-  => (
-    R.path(['results_json', 'search_results']),
-    R.nth(0),
-    R.nth(0),
-    R.path(['listing', 'name']),
-  )
-*/
