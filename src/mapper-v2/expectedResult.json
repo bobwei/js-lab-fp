@@ -1,0 +1,16 @@
+{
+  "US": {
+    "country": "US",
+    "currency": "USD",
+    "exchangeRate": 1,
+    "minimum": 0.99,
+    "minUnit": 0.01
+  },
+  "test": {
+    "country": "test",
+    "currency": "USD",
+    "exchangeRate": 1,
+    "minimum": 0.99,
+    "minUnit": 0.01
+  }
+}

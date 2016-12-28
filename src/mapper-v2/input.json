@@ -1,0 +1,24 @@
+[
+  {
+    "c": "US",
+    "defaultLang": "en",
+    "defaultLocale": "en-US",
+    "currency": {
+      "name": "USD",
+      "exRate": 1,
+      "minimum": 0.99,
+      "minUnit": 0.01
+    }
+  },
+  {
+    "c": "test",
+    "defaultLang": "en",
+    "defaultLocale": "en-US",
+    "currency": {
+      "name": "USD",
+      "exRate": 1,
+      "minimum": 0.99,
+      "minUnit": 0.01
+    }
+  }
+]
