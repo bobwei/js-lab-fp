@@ -22,6 +22,7 @@
   "dependencies": {
     "jest": "^17.0.3",
     "lodash": "^4.17.2",
-    "ramda": "^0.22.1"
+    "ramda": "^0.22.1",
+    "recompose": "^0.21.2"
   }
 }
